@@ -45,7 +45,7 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.link,
+                    Icons.link_rounded,
                     size: 100,
                     color: Colors.blueAccent,
                   ),
@@ -90,7 +90,7 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
                         buttonText: "Join",
                         height: 60,
                         width: 200,
-                        color: Colors.blueGrey,
+                        color: Colors.blue,
                         textColor: Colors.white,
                         borderRadius: BorderRadius.circular(12),
                         fontSize: 20,
@@ -103,7 +103,6 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
                             String msg = response["message"];
                             String roomId = response["roomId"];
                             String roomName = response["roomName"];
-                            print("room id $roomId");
                             if (isCorrect) {
                               provider.webSocketConnection(roomId);
                               if (value.channel == null) {

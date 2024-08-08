@@ -20,20 +20,15 @@ class Messageprovider with ChangeNotifier {
     notifyListeners();
   }
 
-  // Future<void> createRoom() async {
-  //   String value = await Createroom().createRoom();
-  //   roomId = value;
-  //   notifyListeners();
-  // }
   String roomName = "Chat Room";
   getRoomName(String roomname) {
     roomName = roomname;
     notifyListeners();
   }
 
-  // clearMessage() {
-  //   _messages.clear();
-  // }
+  clearMessage() {
+    _messages.clear();
+  }
 
   void webSocketConnection(String id) {
     try {
