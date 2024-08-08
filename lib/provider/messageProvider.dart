@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gorandom/core/toastMessage.dart';
 import 'package:gorandom/utils/wsConnection.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -40,7 +41,6 @@ class Messageprovider with ChangeNotifier {
           channel!.stream.listen((message) {
             final parsedMessage = parseMessage(message);
             final username = parseUsername(message);
-            print(message);
 
             // print("username is ${username}");
             // print("message is ${parsedMessage}");    // print("username is ${username}");
@@ -65,7 +65,7 @@ class Messageprovider with ChangeNotifier {
             //     toastMessage: "The connection has ended", isSucess: true);
             // notifyListeners();
           }, onError: (value) {
-            print("error ${value}");
+            print("error ${value.hashCode}");
           });
         } else {
           channel = null;
@@ -74,7 +74,9 @@ class Messageprovider with ChangeNotifier {
               isSucess: false,
               message: 'Something went wrong from our side');
         }
-      } else {}
+      } else {
+        print("null channel");
+      }
     } catch (e) {
       ToastMessage.toastMessage(
           toastMessage: "Could not establish connection",
