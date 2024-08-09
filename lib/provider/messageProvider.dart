@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:gorandom/core/toastMessage.dart';
 import 'package:gorandom/utils/wsConnection.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -34,7 +33,7 @@ class Messageprovider with ChangeNotifier {
   void webSocketConnection(String id) {
     try {
       Map<String, dynamic> res = Wsconnection().wsConnection(id);
-      if (channel == null) {
+      if (res["channel"] != null) {
         if (res["error"] == null) {
           channel = res["channel"];
 
@@ -42,9 +41,6 @@ class Messageprovider with ChangeNotifier {
             final parsedMessage = parseMessage(message);
             final username = parseUsername(message);
 
-            // print("username is ${username}");
-            // print("message is ${parsedMessage}");    // print("username is ${username}");
-            // print("message is ${parsedMessage}");
             if (parsedMessage != null) {
               _messages.insert(0,
                   {'text': parsedMessage, 'isMe': false, "username": username});
@@ -120,6 +116,14 @@ class Messageprovider with ChangeNotifier {
     if (channel != null) {
       channel!.sink.close();
     }
+  }
+
+  bool isLoading = false;
+
+  void isLoaded(bool value) {
+    isLoading = false;
+    isLoading = value;
+    notifyListeners();
   }
 
   String? parseUsername(String message) {

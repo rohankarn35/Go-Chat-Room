@@ -99,19 +99,26 @@ class _ChatInterfaceState extends State<ChatInterface> {
               Expanded(
                 child: Consumer<Messageprovider>(
                     builder: (context, provider, child) {
-                  return ListView.builder(
-                    reverse: true,
-                    padding: EdgeInsets.all(8),
-                    itemCount: provider.messages.length,
-                    itemBuilder: (context, index) {
-                      final message = provider.messages[index];
-                      return ChatBubble(
-                        message: message['text'],
-                        isMe: message['isMe'],
-                        username: message['username'],
-                      );
-                    },
-                  );
+                  return provider.messages.length >= 1
+                      ? ListView.builder(
+                          reverse: true,
+                          padding: EdgeInsets.all(8),
+                          itemCount: provider.messages.length,
+                          itemBuilder: (context, index) {
+                            final message = provider.messages[index];
+                            return ChatBubble(
+                              message: message['text'],
+                              isMe: message['isMe'],
+                              username: message['username'],
+                            );
+                          },
+                        )
+                      : Center(
+                          child: Text(
+                            "Share RoomID and Enjoy!!",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        );
                 }),
               ),
               Padding(

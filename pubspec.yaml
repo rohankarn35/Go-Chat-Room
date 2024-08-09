@@ -39,6 +39,7 @@ dependencies:
   http: ^1.2.2
   web_socket_channel: ^3.0.1
   get: ^4.6.6
+  jumping_dot: ^0.0.7
 
 dev_dependencies:
   flutter_test:
