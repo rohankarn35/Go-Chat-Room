@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'GoRandom',
+          title: 'Go Chat Room',
           theme: AppTheme.darkThemeMode,
           home: Homepage()),
     );

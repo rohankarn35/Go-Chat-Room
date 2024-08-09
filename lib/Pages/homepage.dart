@@ -15,7 +15,7 @@ class Homepage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Welcome to GoRandom Chat Room",
+                "Welcome to Go Chat Room",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,

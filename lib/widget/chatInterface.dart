@@ -22,12 +22,12 @@ class ChatInterface extends StatefulWidget {
 class _ChatInterfaceState extends State<ChatInterface> {
   final TextEditingController messageEditingController =
       TextEditingController();
-  final FocusNode messageFocusNode = FocusNode(); // Added focus node
+  final FocusNode messageFocusNode = FocusNode();
 
   @override
   void dispose() {
     messageEditingController.dispose();
-    messageFocusNode.dispose(); // Dispose the focus node
+    messageFocusNode.dispose();
     super.dispose();
   }
 
@@ -128,7 +128,7 @@ class _ChatInterfaceState extends State<ChatInterface> {
                     Expanded(
                       child: TextField(
                         controller: messageEditingController,
-                        focusNode: messageFocusNode, // Assign the focus node
+                        focusNode: messageFocusNode,
                         decoration: InputDecoration(
                           hintText: 'Type a message...',
                           border: OutlineInputBorder(

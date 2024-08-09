@@ -35,15 +35,27 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
 
   @override
   void initState() {
-    final provider = context.read<Messageprovider>();
-    provider.isLoaded(false);
-
     // TODO: implement initState
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final provider = context.read<Messageprovider>();
+      provider.isLoaded(false);
+    });
   }
+
+  final FocusNode _focusNode = FocusNode();
 
   void _keyboardUnfocus() {
     FocusScope.of(context).unfocus();
+  }
+
+  @override
+  void dispose() {
+    joinController.dispose();
+    usernameController.dispose();
+    _focusNode.unfocus();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override

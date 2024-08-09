@@ -30,16 +30,30 @@ class _CreateRoomPageState extends State<CreateRoomPage> {
                 roomId: roomId, userName: userName, roomName: roomName)));
   }
 
+  final FocusNode _focusNode = FocusNode();
   void _keyboardUnfocus() {
     FocusScope.of(context).unfocus();
   }
 
   @override
   void initState() {
-    final provider = context.read<Messageprovider>();
-    provider.isLoaded(false);
     // TODO: implement initState
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final provider = context.read<Messageprovider>();
+      provider.isLoaded(false);
+    });
+  }
+
+  @override
+  void dispose() {
+    // _keyboardUnfocus();
+    _focusNode.unfocus();
+    roomNameTextEditingController.dispose();
+    usernameTextEditingController.dispose();
+
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
